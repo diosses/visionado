@@ -1,66 +1,142 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema de Visionado de Emisiones
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema web para la gestión y visionado de emisiones televisivas desarrollado con Laravel 11. Permite importar, asignar y gestionar el proceso de revisión de contenido audiovisual.
 
-## About Laravel
+## 🚀 Características
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Importación de Emisiones**: Carga masiva desde archivos XLSX con validación automática
+- **Gestión de Obras**: Catálogo completo con soporte para series y capítulos
+- **Asignación Inteligente**: Sugerencias automáticas de obras por similitud de título
+- **Sistema de Roles**: Perfiles diferenciados para administradores y visionadores
+- **Dashboard Interactivo**: Visualización del estado de visionados pendientes y completados
+- **Filtros Avanzados**: Búsqueda por tipo, género, país, año y más
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Requisitos
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP >= 8.2
+- Composer
+- Node.js & NPM
+- MySQL/MariaDB
+- Extensiones PHP: zip, xml, mbstring, pdo_mysql
 
-## Learning Laravel
+## 🛠️ Instalación
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. **Clonar el repositorio**
+```bash
+git clone https://github.com/diosses/visionado.git
+cd visionado
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. **Instalar dependencias**
+```bash
+composer install
+npm install
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+3. **Configurar el entorno**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Laravel Sponsors
+4. **Configurar la base de datos**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Edita `.env` con tus credenciales de base de datos:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=visionado
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_password
+```
 
-### Premium Partners
+5. **Ejecutar migraciones y seeders**
+```bash
+php artisan migrate --seed
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+6. **Compilar assets**
+```bash
+npm run build
+```
 
-## Contributing
+7. **Iniciar el servidor**
+```bash
+php artisan serve
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+La aplicación estará disponible en `http://localhost:8000`
 
-## Code of Conduct
+## 📚 Uso
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Importación de Emisiones (XLSX)
 
-## Security Vulnerabilities
+1. Accede al Dashboard como administrador
+2. Ve a la pestaña "Material sin asignar"
+3. Click en "Importar Emisiones (XLSX)"
+4. Sube un archivo con la estructura requerida:
+   - **Hoja "Resumen"**: Filas con campo "Visionado" = "PARA VISIONAR"
+   - **Hoja "Programas"**: Datos de emisiones que coincidan con el Resumen
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Asignación de Obras
 
-## License
+- El material sin asignar se agrupa por "Título Emisión"
+- Puedes asignar obras existentes o crear nuevas rápidamente
+- Las asignaciones generan visionados en estado pendiente
+- Los visionadores pueden iniciar el trabajo desde su dashboard
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Gestión de Obras
+
+- Catálogo completo con filtros por tipo, género, país y año
+- Soporte para series con gestión de temporadas y capítulos
+- Información detallada de elenco y ficha técnica
+
+## 🗂️ Estructura del Proyecto
+
+```
+app/
+├── Http/Controllers/    # Controladores de la aplicación
+├── Models/             # Modelos Eloquent
+├── Imports/            # Clases de importación (Excel)
+└── Services/           # Servicios de negocio
+
+database/
+├── migrations/         # Migraciones de base de datos
+└── seeders/           # Datos iniciales
+
+resources/
+├── views/             # Vistas Blade
+├── js/                # JavaScript (modules & utils)
+└── css/               # Estilos Tailwind
+```
+
+## 🔧 Tecnologías
+
+- **Backend**: Laravel 11, PHP 8.2
+- **Frontend**: Blade, Alpine.js, Tailwind CSS
+- **Base de Datos**: MySQL
+- **Importación**: Maatwebsite Excel (PhpSpreadsheet)
+- **Build Tools**: Vite
+
+## 📖 Documentación Adicional
+
+Para más detalles sobre el flujo de trabajo y operación de la plataforma, consulta [README_ES.md](README_ES.md)
+
+## 🤝 Contribuir
+
+Las contribuciones son bienvenidas. Por favor:
+
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📝 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## 👥 Autor
+
+Desarrollado por [diosses](https://github.com/diosses)
