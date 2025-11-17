@@ -1,0 +1,12 @@
+/* Nested row background and indent for both visionados and material tabs */
+.visionado-nested-row.bg-gray-100, .emision-nested-row.bg-gray-100 {
+	background-color: #f3f4f6 !important; /* Tailwind bg-gray-100 */
+}
+.visionado-nested-row td, .emision-nested-row td {
+	/* Ensure column alignment and left indent for nested rows */
+	vertical-align: middle;
+}
+/* Note: No extra indentation or border on nested first cell to preserve alignment */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
