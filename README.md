@@ -1,158 +1,129 @@
-# Sistema de Visionado de Emisiones
+# Visionado
 
-Sistema web para la gestión y visionado de emisiones televisivas desarrollado con Laravel 11. Permite importar, asignar y gestionar el proceso de revisión de contenido audiovisual.
+Web platform for managing audiovisual content review workflows.
 
-## 🚀 Características
+The system allows administrators to import broadcast schedules, manage productions and episodes, assign reviewers, and track review progress through a centralized dashboard.
 
-- **Importación de Emisiones**: Carga masiva desde archivos XLSX con validación automática
-- **Gestión de Obras**: Catálogo completo con soporte para series y capítulos
-- **Asignación Inteligente**: Sugerencias automáticas de obras por similitud de título
-- **Sistema de Roles**: Perfiles diferenciados para administradores y visionadores
-- **Dashboard Interactivo**: Visualización del estado de visionados pendientes y completados
-- **Filtros Avanzados**: Búsqueda por tipo, género, país, año y más
+## Features
+
+- Bulk XLSX import with automatic validation
+- Production and episode management
+- Automatic title matching suggestions
+- Role-based access control
+- Interactive dashboards
+- Advanced filtering and search
 
 ## Screenshots
 
-### Dashboard y login
+### Dashboard & Login
 
-<img src="screenshots/login.png" height="800">
-<img src="screenshots/dashboard_admin1.png" height="800">
-<img src="screenshots/dashboard_admin2.png" height="800">
-<img src="screenshots/dashboard_admin3.png" height="800">
-<img src="screenshots/dashboard_user.png" height="800">
+<img src="screenshots/login.png" height="500">
+<img src="screenshots/dashboard_admin1.png" height="500">
+<img src="screenshots/dashboard_admin2.png" height="500">
+<img src="screenshots/dashboard_admin3.png" height="500">
+<img src="screenshots/dashboard_user.png" height="500">
 
-### Modales
+### Modals
 
 ![Modales 1](screenshots/modals1.png)
 ![Modales 2](screenshots/modals2.png)
 ![Modales 3](screenshots/modals3.png)
 
-## 📋 Requisitos
+## Requirements
 
 - PHP >= 8.2
 - Composer
 - Node.js & NPM
 - MySQL/MariaDB
-- Extensiones PHP: zip, xml, mbstring, pdo_mysql
+- PHP Extensions: zip, xml, mbstring, pdo_mysql
 
-## 🛠️ Instalación
+## Installation
 
-1. **Clonar el repositorio**
-```bash
+### 1. Clone the repository
 git clone https://github.com/diosses/visionado.git
 cd visionado
-```
 
-2. **Instalar dependencias**
-```bash
+### 2. Install dependencies
 composer install
 npm install
-```
 
-3. **Configurar el entorno**
-```bash
+### 3. Configure the environment
 cp .env.example .env
 php artisan key:generate
-```
 
-4. **Configurar la base de datos**
-
-Edita `.env` con tus credenciales de base de datos:
-```env
+### 4. Configure the database
+#### Edit the .env file with your database credentials:
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=visionado
-DB_USERNAME=tu_usuario
-DB_PASSWORD=tu_password
-```
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
 
-5. **Ejecutar migraciones y seeders**
-```bash
+### 5. Run migrations and seeders:
 php artisan migrate --seed
-```
 
-6. **Compilar assets**
-```bash
+### 6. Build assets
 npm run build
-```
 
-7. **Iniciar el servidor**
-```bash
+### 7. Start the development server
 php artisan serve
-```
 
-La aplicación estará disponible en `http://localhost:8000`
+The application will be available at http://localhost:8000
 
-## 📚 Uso
+## Usage
 
-### Importación de Emisiones (XLSX)
+### XLSX Import (Broadcasts)
 
-1. Accede al Dashboard como administrador
-2. Ve a la pestaña "Material sin asignar"
-3. Click en "Importar Emisiones (XLSX)"
-4. Sube un archivo con la estructura requerida:
-   - **Hoja "Resumen"**: Filas con campo "Visionado" = "PARA VISIONAR"
-   - **Hoja "Programas"**: Datos de emisiones que coincidan con el Resumen
+1. Access the Dashboard as an administrator
+2. Go to the “Unassigned Material” tab
+3. Click on “Import Broadcasts (XLSX)”
+4. Upload a file with the required structure:
+   - **“Summary” sheet**: Rows where the “Reviewed” field equals “TO BE REVIEWED”
+   - **“Programs” sheet**: Broadcast data matching the Summary sheet
 
-### Asignación de Obras
+### Work Assignment
 
-- El material sin asignar se agrupa por "Título Emisión"
-- Puedes asignar obras existentes o crear nuevas rápidamente
-- Las asignaciones generan visionados en estado pendiente
-- Los visionadores pueden iniciar el trabajo desde su dashboard
+- Unassigned material is grouped by “Broadcast Title”
+- You can assign existing works or quickly create new ones
+- Assignments generate review items in a pending state
+- Reviewers can start their work from their dashboard
 
-### Gestión de Obras
+### Work Management
 
-- Catálogo completo con filtros por tipo, género, país y año
-- Soporte para series con gestión de temporadas y capítulos
-- Información detallada de elenco y ficha técnica
+- Full catalog with filters by type, genre, country, and year
+- Series support with season and episode management
+- Detailed metadata including cast and technical information
 
-## 🗂️ Estructura del Proyecto
+## Project Structure
 
-```
 app/
-├── Http/Controllers/    # Controladores de la aplicación
-├── Models/             # Modelos Eloquent
-├── Imports/            # Clases de importación (Excel)
-└── Services/           # Servicios de negocio
+├── Http/Controllers/    # Application controllers
+├── Models/             # Eloquent models
+├── Imports/            # Excel import classes
+└── Services/           # Business logic services
 
 database/
-├── migrations/         # Migraciones de base de datos
-└── seeders/           # Datos iniciales
+├── migrations/         # Database migrations
+└── seeders/            # Seed data
 
 resources/
-├── views/             # Vistas Blade
-├── js/                # JavaScript (modules & utils)
-└── css/               # Estilos Tailwind
-```
+├── views/              # Blade templates
+├── js/                 # JavaScript modules
+└── css/                # Tailwind styles
 
-## 🔧 Tecnologías
+## Technologies
 
-- **Backend**: Laravel 11, PHP 8.2
-- **Frontend**: Blade, Alpine.js, Tailwind CSS
-- **Base de Datos**: MySQL
-- **Importación**: Maatwebsite Excel (PhpSpreadsheet)
-- **Build Tools**: Vite
+- Backend: Laravel 11, PHP 8.2
+- Frontend: Blade, Alpine.js, Tailwind CSS
+- Database: MySQL
+- Import: Maatwebsite Excel (PhpSpreadsheet)
+- Build Tools: Vite
 
-## 📖 Documentación Adicional
+## Additional Documentation
 
-Para más detalles sobre el flujo de trabajo y operación de la plataforma, consulta [README_ES.md](README_ES.md)
+For more details about workflow and platform usage, see README_ES.md
 
-## 🤝 Contribuir
+## Author
 
-Las contribuciones son bienvenidas. Por favor:
-
-1. Fork el proyecto
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📝 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
-
-## 👥 Autor
-
-Desarrollado por [diosses](https://github.com/diosses)
+Developed by [diosses](https://github.com/diosses)
