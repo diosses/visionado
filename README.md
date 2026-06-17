@@ -15,11 +15,11 @@ Sistema web para la gestión y visionado de emisiones televisivas desarrollado c
 
 ### Dashboard y login
 
-![Login](screenshots/login.png)
-![Dashboard admin 2](screenshots/dashboard_admin1.png)
-![Dashboard admin 2](screenshots/dashboard_admin2.png)
-![Dashboard admin 3](screenshots/dashboard_admin3.png)
-![Dashboard user](screenshots/dashboard_user.png)
+<img src="screenshots/login.png" height="800">
+<img src="screenshots/dashboard_admin1.png" height="800">
+<img src="screenshots/dashboard_admin2.png" height="800">
+<img src="screenshots/dashboard_admin3.png" height="800">
+<img src="screenshots/dashboard_user.png" height="800">
 
 ### Modales
 
