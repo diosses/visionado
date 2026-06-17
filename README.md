@@ -17,7 +17,7 @@ The system allows administrators to import broadcast schedules, manage productio
 
 ### Dashboard & Login
 
-<img src="screenshots/login.png" height="500">
+<img src="screenshots/login.png" width="500">
 <img src="screenshots/dashboard_admin1.png" width="500">
 <img src="screenshots/dashboard_admin2.png" width="500">
 <img src="screenshots/dashboard_admin3.png" width="500">
