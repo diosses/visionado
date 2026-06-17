@@ -11,6 +11,22 @@ Sistema web para la gestión y visionado de emisiones televisivas desarrollado c
 - **Dashboard Interactivo**: Visualización del estado de visionados pendientes y completados
 - **Filtros Avanzados**: Búsqueda por tipo, género, país, año y más
 
+## Screenshots
+
+### Dashboard y login
+
+![Login](screenshots/login.png)
+![Dashboard admin 2](screenshots/dashboard_admin1.png)
+![Dashboard admin 2](screenshots/dashboard_admin2.png)
+![Dashboard admin 3](screenshots/dashboard_admin3.png)
+![Dashboard user](screenshots/dashboard_user.png)
+
+### Modales
+
+![Modales 1](screenshots/modals1.png)
+![Modales 2](screenshots/modals2.png)
+![Modales 3](screenshots/modals3.png)
+
 ## 📋 Requisitos
 
 - PHP >= 8.2
